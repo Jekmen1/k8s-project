@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-flask-app 
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: k8s-flask-app 
+  template:
+    metadata:
+      labels:
+        app: k8s-flask-app 
+    spec:
+      containers:
+      - name: k8s-flask-app 
+        image: jekmen23/k8s-flask-app
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 5000
